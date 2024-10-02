@@ -1,0 +1,33 @@
+Object.preventExtensions: This method is used to prevent any new properties from being added to the student object. Existing properties can still be modified or deleted.
+Object.isExtensible: This method checks if the object is extensible (i.e., if new properties can be added). The result is stored in extensibleStatus.
+Object.seal: This method seals the teacher object, preventing the addition or deletion of properties. Existing properties can still be modified.
+Object.isSealed: This method checks if the object is sealed. The result is stored in sealedStatus.
+Printing results: The results of the extensibility and sealing checks are printed to the console.
+
+PROGRAM:
+
+// a) Create a student object and prevent further property additions
+const student = {
+  name: 'John',
+  age: 21,
+  major: 'Computer Science'
+};
+Object.preventExtensions(student);
+
+// b) Check if the student object is extensible
+const extensibleStatus = Object.isExtensible(student);
+
+// c) Create a new object called teacher with a 'subject' property set to 'Math'
+const teacher = {
+  subject: 'Math'
+};
+
+// d) Seal the teacher object to prevent additions or deletions of properties
+Object.seal(teacher);
+
+// e) Check if the teacher object is sealed
+const sealedStatus = Object.isSealed(teacher);
+
+// f) Print the extensibleStatus and sealedStatus to the console
+console.log(`Is the student object extensible? ${extensibleStatus}`);
+console.log(`Is the teacher object sealed? ${sealedStatus}`);

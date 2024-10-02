@@ -1,0 +1,33 @@
+Add 'Meat': Checks if 'Meat' is not already in the cart, and adds it to the beginning using unshift().
+Add 'Sugar': Checks if 'Sugar' is not already in the cart, and adds it to the end using push().
+Remove 'Honey': Removes 'Honey' if the variable allergicToHoney is set to true, using filter().
+Modify 'Tea': Finds the index of 'Tea' and replaces it with 'Green Tea'.
+
+PROGRAM:
+
+let shoppingCart = ['Milk', 'Coffee', 'Tea', 'Honey'];
+let allergicToHoney = true; // Set this to true if allergic, otherwise false
+
+// Add 'Meat' to the beginning of the shopping cart if not already added
+if (!shoppingCart.includes('Meat')) {
+  shoppingCart.unshift('Meat');
+}
+
+// Add 'Sugar' to the end of the shopping cart if not already added
+if (!shoppingCart.includes('Sugar')) {
+  shoppingCart.push('Sugar');
+}
+
+// Remove 'Honey' if allergic to it
+if (allergicToHoney) {
+  shoppingCart = shoppingCart.filter(item => item !== 'Honey');
+}
+
+// Modify 'Tea' to 'Green Tea'
+let teaIndex = shoppingCart.indexOf('Tea');
+if (teaIndex !== -1) {
+  shoppingCart[teaIndex] = 'Green Tea';
+}
+
+console.log(shoppingCart);
+

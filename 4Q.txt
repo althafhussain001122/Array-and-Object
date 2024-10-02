@@ -1,0 +1,78 @@
+addStudent(newStudent): Adds a new student to the students array by pushing the new object.
+updateStudent(id, updatedInfo): Finds the student by id and updates the existing object using the spread operator.
+deleteStudent(id): Removes the student with the specified id by filtering them out of the array.
+listAllStudents(): Loops through the students array and logs the details of each student.
+findStudentsByGrade(grade): Filters and displays students based on the specified grade.
+calculateAverageAge(): Uses the reduce() method to calculate the total age and divides by the number of students to get the average.
+
+PROGRAM:
+// Initial array of students
+let students = [
+  { id: 1, firstName: 'John', lastName: 'Doe', age: 18, grade: 'A' },
+  { id: 2, firstName: 'Jane', lastName: 'Smith', age: 20, grade: 'B' },
+  { id: 3, firstName: 'Sam', lastName: 'Green', age: 19, grade: 'A' },
+  { id: 4, firstName: 'Lisa', lastName: 'Brown', age: 21, grade: 'C' }
+];
+
+// a. Add a Student
+function addStudent(newStudent) {
+  students.push(newStudent);
+}
+
+// b. Update Student Information by id
+function updateStudent(id, updatedInfo) {
+  const studentIndex = students.findIndex(student => student.id === id);
+  if (studentIndex !== -1) {
+    students[studentIndex] = { ...students[studentIndex], ...updatedInfo };
+  } else {
+    console.log('Student not found');
+  }
+}
+
+// c. Delete a Student by id
+function deleteStudent(id) {
+  students = students.filter(student => student.id !== id);
+}
+
+// d. List All Students
+function listAllStudents() {
+  console.log('List of all students:');
+  students.forEach(student => {
+    console.log(`ID: ${student.id}, Name: ${student.firstName} ${student.lastName}, Age: ${student.age}, Grade: ${student.grade}`);
+  });
+}
+
+// e. Find Students by Grade
+function findStudentsByGrade(grade) {
+  const studentsInGrade = students.filter(student => student.grade === grade);
+  console.log(`Students with grade ${grade}:`);
+  studentsInGrade.forEach(student => {
+    console.log(`ID: ${student.id}, Name: ${student.firstName} ${student.lastName}`);
+  });
+}
+
+// f. Calculate Average Age of all Students
+function calculateAverageAge() {
+  const totalAge = students.reduce((sum, student) => sum + student.age, 0);
+  const averageAge = totalAge / students.length;
+  console.log(`Average age of students: ${averageAge.toFixed(2)}`);
+}
+
+// Example usage:
+// Add a new student
+addStudent({ id: 5, firstName: 'Emily', lastName: 'Davis', age: 22, grade: 'B' });
+
+// Update student information
+updateStudent(2, { firstName: 'Janet', grade: 'A' });
+
+// Delete a student by ID
+deleteStudent(4);
+
+// List all students
+listAllStudents();
+
+// Find students by grade 'A'
+findStudentsByGrade('A');
+
+// Calculate average age of all students
+calculateAverageAge();

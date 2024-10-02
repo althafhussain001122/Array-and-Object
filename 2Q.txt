@@ -1,0 +1,45 @@
+Sorting: We use the sort() method to arrange the array in ascending order and find the minimum and maximum values.
+Median: For an odd-length array, we select the middle element. For an even-length array, we average the two middle elements.
+Average: We sum all elements using reduce() and divide by the number of elements.
+Range: Calculated by subtracting the minimum age from the maximum age.
+Comparison: We use Math.abs() to find the absolute differences between the minimum/maximum and the average.
+
+PROGRAM:
+
+const ages = [19, 22, 19, 24, 20, 25, 26, 24, 25, 24];
+
+// Sort the array and find the min and max age
+const sortedAges = ages.slice().sort((a, b) => a - b);  // slice() is used to avoid mutating the original array
+const minAge = sortedAges[0];
+const maxAge = sortedAges[sortedAges.length - 1];
+
+// Find the median age (one middle item or two middle items divided by two)
+const middleIndex = Math.floor(sortedAges.length / 2);
+let medianAge;
+if (sortedAges.length % 2 === 0) {
+  // If even, take the average of the two middle numbers
+  medianAge = (sortedAges[middleIndex - 1] + sortedAges[middleIndex]) / 2;
+} else {
+  // If odd, take the middle number
+  medianAge = sortedAges[middleIndex];
+}
+
+// Find the average age (sum of all items divided by the number of items)
+const averageAge = sortedAges.reduce((sum, age) => sum + age, 0) / sortedAges.length;
+
+// Find the range of the ages (max - min)
+const rangeOfAges = maxAge - minAge;
+
+// Compare the value of (min - average) and (max - average) using abs()
+const minAverageDifference = Math.abs(minAge - averageAge);
+const maxAverageDifference = Math.abs(maxAge - averageAge);
+
+// Output the results
+console.log(`Sorted Ages: ${sortedAges}`);
+console.log(`Min Age: ${minAge}`);
+console.log(`Max Age: ${maxAge}`);
+console.log(`Median Age: ${medianAge}`);
+console.log(`Average Age: ${averageAge}`);
+console.log(`Range of Ages: ${rangeOfAges}`);
+console.log(`Min - Average: ${minAverageDifference}`);
+console.log(`Max - Average: ${maxAverageDifference}`);

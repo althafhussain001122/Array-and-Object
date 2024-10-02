@@ -1,0 +1,38 @@
+Here’s how you can create the displayStudentInfo function using a for...in loop to iterate over the properties of a student object and print each property with its corresponding value:
+
+for...in loop: Loops through each property in the student object.
+student.hasOwnProperty(key): Ensures that only the object's own properties (not inherited ones) are printed.
+console.log(): Prints the property name (key) and its value (student[key]).
+
+PROGRAM:
+// Function to display student information
+function displayStudentInfo(student) {
+  console.log('Student Information:');
+  for (let key in student) {
+    if (student.hasOwnProperty(key)) {
+      console.log(`${key}: ${student[key]}`);
+    }
+  }
+}
+
+// Example usage of displayStudentInfo
+const student = {
+  id: 101,
+  firstName: 'Alex',
+  lastName: 'Johnson',
+  age: 22,
+  grade: 'A',
+  major: 'Computer Science'
+};
+
+displayStudentInfo(student);
+
+Expected Output:
+
+Student Information:
+id: 101
+firstName: Alex
+lastName: Johnson
+age: 22
+grade: A
+major: Computer Science
